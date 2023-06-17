@@ -1,1 +1,12 @@
 # node-express_project
+#i install nodeman so that can restart 
+our server whenever we make changes
+# i used thunder client for testing apis as 
+http client
+
+# go to mongodb website, 
+
+download bcrypt
+download jsonwebtoken
+check dependancies
+
