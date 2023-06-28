@@ -1,19 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
+const { ensureAuthenticated } = required('../config/auth');
 // method used is get
-router.get('/',(req,res) => res.render('welcome')
-
-
-/*
-
-const express = require("express");
-const router = express.Router();
-app.get('/',(res,req) => res.send('welcome'));
-
-
-
-*/
-
-);
+router.get('/',(req,res) => res.render('welcome'))
+router.get('/dashboard', ensureAuthenticated, (req,res)  => 
+res.render('dashboard', {
+    name: req.user.name
+}));
 module.exports = router;
