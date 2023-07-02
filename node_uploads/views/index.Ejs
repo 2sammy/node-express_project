@@ -11,8 +11,9 @@
 <body>
 <div class="container">
     <h1>File upload</h1>
-    <%= typeof msg !== 'undefined ' ? msg : '' %>
-    <form action="/uploads" method="POST">
+    <%= typeof msg !='undefined ' ? msg : '' %>
+    <form action="/uploads" method="POST"
+        enctype="multipart/form-data" >
         <div class="file-field input-field">
           <div class="btn grey">
             <span>File</span>
