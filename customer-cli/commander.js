@@ -1,5 +1,6 @@
-const commander = require('commander');
-const {prompt} = require('acquirer');
+#!/usr/bin/env node
+const program = require('commander');
+const { prompt } = require('inquirer');
 const {
     findCustomer, 
     addCustomer,
@@ -7,7 +8,7 @@ const {
     removeCustomer,
     listCustomer
 } = require('./index');
-
+ 
 // Customer Questions
 
 const questions = [{
@@ -49,6 +50,7 @@ program
     addCustomer({firstname,lastname,phone,email});
 });
 */
+// add customer
 program
  .command('add')
  .alias('a')
@@ -56,11 +58,37 @@ program
  .action(() => {
     prompt(questions). then(answers => addCustomer(answers))
  })
-
+//find customer
  program
  .command('find <name>')
  .alias('f')
  .description('Find a customer')
  .action(name => findCustomer(name))
+
+ //update customer
+ program
+ .command('update <_id>')
+ .alias('u')
+ .description('Update a customer')
+ .action(_id => {
+    prompt(questions).then(answers=> updateCustomer(_id, answers));
+ });
+// remove customer
+ program
+        .command('remove <_id>')
+        .alias('r')
+        .description('Remove a customer')
+        .action((_id) => {
+            prompt(questions).then(answers=> removeCustomer(_id));
+ });
+
+ //list all customers
+
+ program
+        .command('list')
+        .alias('l')
+        .description('list all customers')
+        .action(() =>listCustomer());
+ 
 
 program.parse(process.argv);
