@@ -41,7 +41,30 @@ const updateCustomer = (_id,customer) => {
     })
 }
 
+//customer removed
+
+const removeCustomer= (_id) => {
+    Customer.remove({_id })
+    .then(customer => {
+        console.info('Customer removed');
+        db.close();
+    })
+}
+
+//list customers
+const listCustomer= (_id) => {
+    Customer.find({_id })
+    .then(customer => {
+        console.info(customers);
+        console.info(`${customer.length} customers`);
+        db.close();
+    })
+}
+
 module.exports = {
     addCustomer,
-    findCustomer
+    findCustomer,
+    removeCustomer,
+    updateCustomer,
+    listCustomer
 }

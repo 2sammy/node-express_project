@@ -1,7 +1,11 @@
 const commander = require('commander');
 const {prompt} = require('acquirer');
 const {
-    findCustomer, addCustomer
+    findCustomer, 
+    addCustomer,
+    updateCustomer,
+    removeCustomer,
+    listCustomer
 } = require('./index');
 
 // Customer Questions
